@@ -35,3 +35,24 @@ void calculateStandardDeviation() {
   stdout.write("σ = $standardDeviation");
   stdout.write("\n");
 }
+
+void calculateStandardDeviationUsingFunctionalPrograming() {
+  stdout.write("Please Enter your full array i.e 1, 2, 3: ");
+  stdout.write("\n");
+
+  final input = stdin.readLineSync();
+  final allElements = input!.split(",");
+  final cleanElements = allElements.map((e) => e.trim());
+  final numbers = cleanElements.map((e) => int.parse(e));
+  final numbersSum = numbers.reduce((value, element) => value + element);
+  final average = numbersSum / numbers.length;
+  final averageSubtracted = numbers.map((e) => e - average);
+  final squared = averageSubtracted.map((e) => e * e);
+  final squaredSum = squared.reduce((value, element) => value + element);
+  final divisionResult = squaredSum / numbers.length;
+  final standardDeviation = sqrt(divisionResult);
+
+  stdout.write("\n");
+  stdout.write("σ = $standardDeviation");
+  stdout.write("\n");
+}
